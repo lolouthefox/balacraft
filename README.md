@@ -10,7 +10,7 @@ A Balatro mod that adds Minecraft related content to your game!
 - Have WinRar or similar installed
 
 ### Importing sounds
-1. Run the following command in the root folder of the project: ```python3 .\bake_assets.py```
+1. Run the following command in the root folder of the project: ```python3 ./bakery/bake_assets.py```
 2. And you're done!
 
 ### Getting Balatro's source code

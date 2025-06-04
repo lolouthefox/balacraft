@@ -1,6 +1,6 @@
 # asset files
 assets/imported_sounds
-assets/__pycache__
+bakery/__pycache__
 
 # Balatro's source code
 dependencies/balatro_source

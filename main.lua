@@ -27,7 +27,7 @@ SMODS.Joker {
     key = 'creeper',
     loc_txt = {
         name = 'Creeper',
-        text = {"{C:mult}X#1#{} Mult", "{C:mult}self destroys{}"}
+        text = {"{C:mult}X#1#{} Mult", "{C:red,E:2}self destroys{}"}
     },
     config = {
         extra = {
@@ -39,7 +39,7 @@ SMODS.Joker {
             vars = {card.ability.extra.Xmult}
         }
     end,
-    rarity = 3,
+    rarity = 2,
     atlas = 'mcjokers',
     pos = {
         x = 0,
@@ -49,7 +49,6 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.joker_main then
             -- Tells the joker what to do. In this case, it pulls the value of mult from the config, and tells the joker to use that variable as the "mult_mod".
-
             return {
                 Xmult_mod = card.ability.extra.Xmult,
                 -- This is a localize function. Localize looks through the localization files, and translates it. It ensures your mod is able to be translated. I've left it out in most cases for clarity reasons, but this one is required, because it has a variable.

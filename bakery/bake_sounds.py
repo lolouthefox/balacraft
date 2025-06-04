@@ -2,7 +2,7 @@ import os
 import shutil
 import time
 import re
-from .formater import progress_bar
+from bakery.formater import progress_bar
 
 
 def flatten_and_rename_files(src_dir, dest_dir):
@@ -46,6 +46,8 @@ def flatten_and_rename_files(src_dir, dest_dir):
                      prefix="", suffix=f" Moving {new_filename}")
         dest_path = os.path.join(dest_dir, new_filename)
         shutil.copy2(abs_path, dest_path)
+    progress_bar(files_baked, files_to_bake, bar_length=30,
+                 prefix="", suffix=f" Done ✅")
 
 
 def bake_sounds(source_folder, destination_folder):

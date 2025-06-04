@@ -3,7 +3,7 @@ import os
 import shutil
 import json
 import re
-from assets.formater import progress_bar
+from bakery.formater import progress_bar
 
 
 def import_minecraft_sounds(minecraft_dir, output_dir, index_file='24.json', import_map_file=None):
@@ -94,7 +94,8 @@ def import_minecraft_sounds(minecraft_dir, output_dir, index_file='24.json', imp
         progress_bar(file_count, total_files, bar_length=30,
                      prefix="", suffix=f" Moving {output_rel_path}")
 
-    print()  # Newline after progress bar
+    progress_bar(file_count, total_files, bar_length=30,
+                 prefix="", suffix=f" Done ✅")
     elapsed = time.time() - start_time
     print(f"Import finished in {elapsed:.2f} seconds")
     print(f"Total files imported: {file_count}")
