@@ -1,6 +1,9 @@
 # ⛏️ Balacraft
 A Balatro mod that adds Minecraft related content to your game!
 
+## Installation
+Go to the releases section on the right. Select latest release. Please note that you need Steamodded and Lovely (LÖVE injector). Latest version always prefered. If you find any bug, don't hesitate to open an issue!
+
 ## Developpement
 ### Requirements
 - Be on windows
@@ -9,15 +12,15 @@ A Balatro mod that adds Minecraft related content to your game!
 - Have Balatro installed (through steam preferably)
 - Have WinRar or similar installed
 
-### Importing sounds
-1. Run the following command in the root folder of the project: ```python3 ./bakery/bake_assets.py```
-2. And you're done!
+### Running the baker
+1. Open powershell
+2. Create a python environement: ```python3 -m venv ./.venv```
+3. Activate the [environement based on your OS](https://docs.python.org/3/library/venv.html#how-venvs-work), here is an example for windows: ```./.venv/Scripts/Activate.ps1```
+4. Install the dependencies: ```python3 -m pip install -r ./requirements.txt```
+5. Run the bakery: ```python3 ./main.py --bake```
 
-### Getting Balatro's source code
-1. Open Steam and go to your library
-2. Right click Balatro in the game list
-3. Select `Manage > Browse local files` in the menu
-4. Left click `Balatro.exe` and select `Show more options... > WinRAR > Extract to 'Balatro/'`
-5. Move the new `Balatro` folder into the `dependencies` folder and rename it to `balatro_source`
+### Bakery tips:
+- To bake the whole project you can simply use the `--bake` flag.
+- You dont need to reimport everything everytime, it do be a very long process and it can help to skip it if already imported using the `--skip-import` flag.
 
 *Not an official Minecraft product. Not affiliated with Mojang nor Microsoft.*
