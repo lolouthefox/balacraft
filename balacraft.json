@@ -1,0 +1,14 @@
+{
+  "id": "balacraft",
+  "name": "Balacraft",
+  "display_name": "Balacraft",
+  "author": ["Liam Cheneval"],
+  "description": "A Balatro mod that adds Minecraft related content.",
+  "prefix": "mc",
+  "main_file": "main.lua",
+  "priority": 0,
+  "badge_colour": "53A435",
+  "badge_text_colour": "ECE6E4",
+  "version": "0.0.1~dev",
+  "dependencies": ["Steamodded (>=1.0.0~)", "Lovely (>=0.7.1)"]
+}
