@@ -1,4 +1,4 @@
 # asset files
-assets\sounds\**
-assets\imported_sounds\**
+assets/sounds
+assets/imported_sounds
 __pycache__
