@@ -1,0 +1,9 @@
+[submodule "dependencies/dependencies/love2d"]
+	path = dependencies/dependencies/love2d
+	url = https://github.com/LuaCATS/love2d.git
+[submodule "dependencies/love2d"]
+	path = dependencies/love2d
+	url = https://github.com/LuaCATS/love2d.git
+[submodule "dependencies/smods"]
+	path = dependencies/smods
+	url = https://github.com/Steamodded/smods.git
