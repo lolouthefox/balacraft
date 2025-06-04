@@ -1,7 +1,18 @@
 {
   "workspace.library": [
-    "path\\to\\Steamodded\\lsp_def\\folder",
-    "path\\to\\Balatro\\Source\\folder",
-    "path\\to\\love2d\\annotation\\folder"
-  ]
+    "dependencies\\smods\\lsp_def",
+    "dependencies\\balatro_source",
+    "dependencies\\love2d"
+  ],
+  "diagnostics.disable": [
+    "undefined-global",
+    "lowercase-global",
+    "need-check-nil",
+    "duplicate-set-field",
+    "inject-field",
+    "undefined-field"
+  ],
+  "runtime.version": "LuaJIT",
+  "type.weakUnionCheck": true,
+  "type.weakNilCheck": true
 }
