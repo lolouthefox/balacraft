@@ -27,7 +27,7 @@ SMODS.Joker {
     key = 'creeper',
     loc_txt = {
         name = 'Creeper',
-        text = {"{C:mult}X#1#{} Mult", "{C:red,E:2}self destroys{}"}
+        text = {"{C:mult}X#1#{} Mult", "{C:red,E:2}self destroys at end of round{}"}
     },
     config = {
         extra = {
@@ -67,15 +67,25 @@ SMODS.Joker {
             -- This part plays the animation.
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    play_sound('mc__random__explode')
                     card.T.r = -0.2
                     card:juice_up(0.3, 0.4)
                     card.states.drag.is = true
-                    card.children.center.pinch.x = true
+                    play_sound('mc__random__fuse')
                     -- This part destroys the card.
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
-                        delay = 0.3,
+                        delay = 2,
+                        blockable = false,
+                        func = function()
+                            play_sound('mc__random__explode')
+                            card.children.center.pinch.x = true
+                            G.jokers:remove_card(card)
+                            return true;
+                        end
+                    }))
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 2.3,
                         blockable = false,
                         func = function()
                             G.jokers:remove_card(card)
@@ -84,12 +94,13 @@ SMODS.Joker {
                             return true;
                         end
                     }))
+
                     return true
                 end
             }))
 
             return {
-                message = 'Oh no!'
+                message = 'Oh man!'
             }
         end
     end
