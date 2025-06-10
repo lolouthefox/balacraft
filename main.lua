@@ -1,20 +1,19 @@
 -- Creates an atlas for cards to use
 SMODS.Atlas {
     -- Key for code to find it with
-    key = "ModdedVanilla",
+    key = "mc_jokers",
     -- The name of the file, for the code to pull the atlas from
-    path = "ModdedVanilla.png",
+    path = "mc_jokers.png",
     -- Width of each sprite in 1x size
     px = 71,
     -- Height of each sprite in 1x size
     py = 95
 }
-
 SMODS.Atlas {
     -- Key for code to find it with
-    key = "mcjokers",
+    key = "mc_enchant_books",
     -- The name of the file, for the code to pull the atlas from
-    path = "mcjokers.png",
+    path = "mc_enchant_books.png",
     -- Width of each sprite in 1x size
     px = 71,
     -- Height of each sprite in 1x size
@@ -22,6 +21,29 @@ SMODS.Atlas {
 }
 
 SMODS.Sound:register_global()
+
+SMODS.Shader {
+    key = "enchanted",
+    path = "enchanted.fs"
+}
+
+SMODS.Edition {
+    key = "enchanted",
+    shader = "enchanted",
+    loc_txt = {
+        name = "Enchanted",
+        label = "Enchanted",
+        text = {"Cards has a special {C:blue,E:1}enchantement{}."}
+    },
+    in_shop = true,
+    extra_cost = 5,
+    sound = {
+        sound = "mc__block_enchantment_table__enchant",
+        per = 1,
+        vol = 1
+    }
+
+}
 
 SMODS.Joker {
     key = 'creeper',
@@ -40,7 +62,7 @@ SMODS.Joker {
         }
     end,
     rarity = 2,
-    atlas = 'mcjokers',
+    atlas = 'mc_jokers',
     pos = {
         x = 0,
         y = 0
@@ -105,3 +127,41 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Consumable({
+    set = "Tarot",
+    key = "ce_fortune_1",
+    pos = {
+        x = 0,
+        y = 0
+    },
+    loc_txt = {
+        name = "Fortune I",
+        text = {"Add {C:blue}Fortune I{}", "to the selected card"}
+    },
+    atlas = 'mc_enchant_books',
+    cost = 4,
+    unlocked = true,
+    can_use = function(self, card)
+        if #G.hand.highlighted <= card.ability.extra and #G.hand.highlighted >= 1 then
+            return true
+        else
+            return false
+        end
+    end,
+    use = function(card, area, copier)
+        local used_tarot = (copier or card)
+        G.E_MANAGER:add_event(Event({
+            trigger = 'after',
+            delay = 0.1,
+            func = function()
+                for k, card in ipairs(G.hand.highlighted) do
+                    card:set_edition({
+                        enchanted = true
+                    }, true)
+                end
+                return true
+            end
+        }))
+    end
+})
